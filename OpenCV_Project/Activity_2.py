@@ -5,7 +5,7 @@ import projectFaceDetect as pjs
 
 # from PIL import Image
 
-img = cv2.imread('C:/Users/Thiha Aung/Desktop/AI/OpenCV/OpenCV_Project/hazel.jpg')
+img = cv2.imread('C:/Users/Thiha Aung/Desktop/AI/OpenCV/OpenCV_Project/hazel2.jpg')
 face_rect, grayimg = pjs.convert_grayscale(img)
 print(face_rect)
 faces, face_id = pjs.cropImages('C:/Users/Thiha Aung/Desktop/AI/OpenCV/OpenCV_Project/images')

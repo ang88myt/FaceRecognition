@@ -12,8 +12,8 @@ modelPath = join(dirname(__file__), "openCVs_facedetector")
 curr_path = os.getcwd()
 print("Loading face detection model")
 
-# proto_path = os.path.join(curr_path, 'model', 'deploy.prototxt')
-# model_path = os.path.join(curr_path, 'model', 'res10_300x300_ssd_iter_140000.caffemodel')
+proto_path = os.path.join(curr_path, 'model', 'deploy.prototxt')
+model_path = os.path.join(curr_path, 'model', 'res10_300x300_ssd_iter_140000.caffemodel')
 
 
 face_detector = cv2.dnn.readNetFromCaffe(prototxt=proto_path, caffeModel=model_path)
@@ -27,7 +27,7 @@ le = pickle.loads(open('le.pickle', "rb").read())
 
 print("Starting test camera")
 vs = cv2.VideoCapture(0)
-time.sleep(1)
+# time.sleep(1)
 
 while True:
 
@@ -62,7 +62,8 @@ while True:
             proba = preds[j]
             name = le.classes_[j]
 
-            text = "{}: {:.2f}".format(name, proba * 100)
+            # text = "{}: {:.2f}".format(name, proba * 100)
+            text = "{}".format(name)
             y = startY - 10 if startY - 10 > 10 else startY + 10
             cv2.rectangle(frame, (startX, startY), (endX, endY), (0, 0, 255), 2)
             cv2.putText(frame, text, (startX, y), cv2.FONT_HERSHEY_SIMPLEX, 0.65, (0, 0, 255), 2)

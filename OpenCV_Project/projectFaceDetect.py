@@ -12,7 +12,7 @@ def convert_grayscale(img):
         faces (ndarray): recognized face 
         gray (ndarray): gray scale image
     """
-    gray = cv2.cvtColor(img,cv2.COLOR_BGR2RGB) 
+    gray = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY) 
     
     path = "C:/Users/Thiha Aung/Desktop/AI/OpenCV/OpenCV_Project/haarcascade_frontalface_default.xml"
     face_cascade = cv2.CascadeClassifier(path)

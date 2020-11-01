@@ -6,7 +6,6 @@ import pickle
 import os
 import imutils
 
-
 curr_path = os.getcwd()
 print("Loading face detection model")
 proto_path = os.path.join(curr_path, 'model', 'deploy.prototxt')
@@ -35,7 +34,8 @@ for (i, filename) in enumerate(filenames):
 
     (h, w) = image.shape[:2]
 
-    image_blob = cv2.dnn.blobFromImage(cv2.resize(image, (300, 300)), 1.0, (300, 300), (104.0, 177.0, 123.0), False, False)
+    image_blob = cv2.dnn.blobFromImage(cv2.resize(image, (300, 300)), 1.0, (300, 300), (104.0, 177.0, 123.0), False,
+                                       False)
 
     face_detector.setInput(image_blob)
     face_detections = face_detector.forward()
@@ -44,13 +44,12 @@ for (i, filename) in enumerate(filenames):
     confidence = face_detections[0, 0, i, 2]
 
     if confidence >= 0.5:
-
         box = face_detections[0, 0, i, 3:7] * np.array([w, h, w, h])
         (startX, startY, endX, endY) = box.astype("int")
 
         face = image[startY:endY, startX:endX]
 
-        face_blob = cv2.dnn.blobFromImage(face, 1.0/255, (96, 96), (0, 0), True, False)
+        face_blob = cv2.dnn.blobFromImage(face, 1.0 / 255, (96, 96), (0, 0), True, False)
 
         face_recognizer.setInput(face_blob)
         face_recognitions = face_recognizer.forward()
@@ -59,7 +58,6 @@ for (i, filename) in enumerate(filenames):
 
         face_embeddings.append(face_recognitions.flatten())
         face_names.append(name)
-
 
 data = {"embeddings": face_embeddings, "names": face_names}
 

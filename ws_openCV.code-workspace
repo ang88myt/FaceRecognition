@@ -2,9 +2,12 @@
 	"folders": [
 		{
 			"path": "."
+		},
+		{
+			"path": "OpenCV_Project"
 		}
 	],
 	"settings": {
-		"python.pythonPath": "C:\\Users\\Thiha Aung\\AppData\\Local\\Programs\\Python\\Python38\\python.exe"
+		"python.pythonPath": "C:\\Python36\\python.exe"
 	}
 }
